@@ -38,16 +38,31 @@ public class Daycalculator extends Application{
 	}
 
 	private void find(){
-		int userYear = Integer.parseInt(year.getText()); //user entered year
-		int userMonth = Integer.parseInt(month.getText()); //user entered month
-		int userDate = Integer.parseInt(date.getText()); //user entered date
+		boolean validInputs = true; //to check if the user provided inputs are valid
+
+		int userYear = 0, userMonth = 0, userDate = 0;
+
+		try{
+			userYear = Integer.parseInt(year.getText()); //user entered year
+			userMonth = Integer.parseInt(month.getText()); //user entered month
+			userDate = Integer.parseInt(date.getText()); //user entered date
+		}catch(Exception e){
+			validInputs = false;
+
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Invalid Input");
+			alert.setHeaderText("INVALID INPUT");
+			alert.setContentText("Invalid Input");
+			alert.showAndWait();
+		}
+
 		String[] days = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};//Array for finding the answer
 		int[] monthCodes = {6,2,2,5,0,3,5,1,4,6,2,4}; //year codes for non-leap year
 		int[] leapmonthCodes = {5,1,2,5,0,3,5,1,4,6,2,4}; //year codes for leap year
 		boolean leap = userYear%4==0?true:false; //to check leap year
 		int numAns = 0; //numeric representation of the answer
 
-		boolean validInputs = true; //to check if the user provided inputs are valid
+
 
 		if(userYear <= 0 || userMonth <= 0 || userDate <= 0 ){
 			validInputs = false;
@@ -59,13 +74,13 @@ public class Daycalculator extends Application{
 			alert.showAndWait();
 		}
 
-		if(userYear < 1900 || userYear >= 2100){
+		if(userYear < 1900 || userYear >= 2100 || userMonth > 12){
 			validInputs = false;
 
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Invalid Input");
 			alert.setHeaderText("INVALID INPUT");
-			alert.setContentText("Year must be in range 1900-2099 (both inclusive)");
+			alert.setContentText("Year must be in range 1900-2099 (both inclusive) and months smaller than 12");
 			alert.showAndWait();
 		}
 
