@@ -5,3 +5,12 @@ Basic application in JavaFX to calculate the day of a particular date in the 20t
 
 My first application in JavaFX
 
+##SCREENSHOTS
+
+###Standard Calculations
+![alt tag](http://i.imgur.com/WLemfo9.jpg)
+![alt tag](http://i.imgur.com/HqVt7eu.jpg)
+
+###Invalid Inputs
+![alt tag](http://i.imgur.com/eUfwNeE.jpg)
+![alt tag](http://i.imgur.com/E9a0lMx.jpg)
